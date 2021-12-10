@@ -1,4 +1,3 @@
-import {useEffect} from "react";
 import Form from "./Form/Form.js";
 import ContactList from "./Contacts/ContactsList";
 import Filter from "./Filter/Filter";
@@ -11,20 +10,6 @@ function App() {
   const contacts = useSelector((state)=> state.contacts.items)
   const filter = useSelector((state) => state.contacts.filter)
   const dispatch = useDispatch()
-
-  
-
-  useEffect(() => {
-        if (contacts !== []) {
-      window.localStorage.setItem("contacts", JSON.stringify(contacts));
-    }
-  }, [contacts]);
-
-  //   function localStorage() {
-  //   const contacts = window.localStorage.getItem("contacts");
-  //   const parseContacts = JSON.parse(contacts);
-  //   return parseContacts;
-  // }
 
   function handleFilter(e) {
     const { value } = e.currentTarget;
