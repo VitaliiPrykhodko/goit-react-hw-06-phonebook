@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
 import styles from "./Filter.module.css"
+import { useSelector } from "react-redux";
 
-const Filter = ({filter, handleFilter}) => {
+const Filter = ({ handleFilter }) => {
+  const filter = useSelector((state)=>state.contacts.filter)
     return (
         <div className={styles.filter_box}>
              <label className={styles.filter_label}>
@@ -19,7 +21,6 @@ const Filter = ({filter, handleFilter}) => {
 }
 
 Filter.propTypes = {
-    filter: PropTypes.string,
     handleFilter: PropTypes.func.isRequired
 }
 

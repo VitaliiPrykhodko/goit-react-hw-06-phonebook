@@ -9,21 +9,22 @@ import actions from './Redux/Counter/counter-action';
 
 function App() {
   const contacts = useSelector((state)=> state.contacts.items)
-  const filter = useSelector((state)=> state.contacts.filter)
-
+  const filter = useSelector((state) => state.contacts.filter)
   const dispatch = useDispatch()
 
-  // function localStorage() {
-  //   const contacts = window.localStorage.getItem("contacts");
-  //   const parseContacts = JSON.parse(contacts);
-  //   return parseContacts;
-  // }
+  
 
   useEffect(() => {
         if (contacts !== []) {
       window.localStorage.setItem("contacts", JSON.stringify(contacts));
     }
   }, [contacts]);
+
+  //   function localStorage() {
+  //   const contacts = window.localStorage.getItem("contacts");
+  //   const parseContacts = JSON.parse(contacts);
+  //   return parseContacts;
+  // }
 
   function handleFilter(e) {
     const { value } = e.currentTarget;
@@ -59,7 +60,7 @@ function App() {
       <h1>Phonebook</h1>
       <Form onClick={handleAddContact} />
       <h2 className="contact_title">Contacts</h2>
-      <Filter filter={filter} handleFilter={handleFilter} />
+      <Filter handleFilter={handleFilter} />
       <ContactList
         contacts={foundContacts()}
       />
